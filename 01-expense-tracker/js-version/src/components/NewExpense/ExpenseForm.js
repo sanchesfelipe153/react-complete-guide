@@ -19,10 +19,16 @@ const ExpenseForm = (props) => {
 	const submitHandler = (event) => {
 		event.preventDefault()
 
+		let date = new Date(enteredDate)
+		const dateMatch = /(\d\d\d\d)-(\d\d)-(\d\d)/.exec(enteredDate)
+		if (dateMatch) {
+			// Workaround for different timezones
+			date = new Date(dateMatch[1], dateMatch[2] - 1, dateMatch[3])
+		}
 		const expenseData = {
 			title: enteredTitle,
-			amount: enteredAmount,
-			date: new Date(enteredDate),
+			amount: +enteredAmount,
+			date: date,
 		}
 
 		props.onSaveExpenseData(expenseData)
@@ -65,6 +71,9 @@ const ExpenseForm = (props) => {
 				</div>
 			</div>
 			<div className="new-expense__actions">
+				<button type="button" onClick={props.onCancel}>
+					Cancel
+				</button>
 				<button type="submit">Add Expense</button>
 			</div>
 		</form>
