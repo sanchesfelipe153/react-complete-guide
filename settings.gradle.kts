@@ -1,5 +1,15 @@
 rootProject.name = "react-complete-guide"
 
+pluginManagement {
+	repositories {
+		google()
+		jcenter()
+		gradlePluginPortal()
+	}
+}
+
+includeBuild("kotlin-dependencies")
+
 include(":kotlin-commons")
 
 include(":expense-tracker")

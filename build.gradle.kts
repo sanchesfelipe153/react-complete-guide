@@ -1,4 +1,5 @@
 plugins {
+	id("check-plugins-versions")
 	idea
 }
 
@@ -10,7 +11,7 @@ buildscript {
 		maven(url = "https://maven.google.com")
 	}
 
-	val kotlinVersion = "1.4.31"
+	val kotlinVersion = "1.4.30"
 	dependencies {
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-serialization:${kotlinVersion}")

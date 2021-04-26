@@ -28,7 +28,7 @@ const NewExpense = (props) => {
 		props.onAddExpense(expenseData)
 		setShowForm(false)
 	}
-	const onCancelHandler = () => {
+	const cancelHandler = () => {
 		setShowForm(false)
 	}
 
@@ -36,7 +36,7 @@ const NewExpense = (props) => {
 		<div className="new-expense">
 			<ExpenseForm
 				onSaveExpenseData={saveExpenseDataHandler}
-				onCancel={onCancelHandler}
+				onCancel={cancelHandler}
 			/>
 		</div>
 	)
