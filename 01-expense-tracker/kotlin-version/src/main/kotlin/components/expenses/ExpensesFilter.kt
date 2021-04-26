@@ -67,7 +67,7 @@ private object ExpensesFilterStyles : StyleSheet("ExpensesFilterStyles") {
 
 		label {
 			fontWeight = FontWeight.bold
-			marginTop = 0.5.rem
+			marginBottom = 0.5.rem
 		}
 
 		select {
