@@ -42,6 +42,11 @@ allprojects {
 idea {
 	module {
 		name = "react-complete-guide"
-		excludeDirs = excludeDirs + file(".idea") + file("gradle") + file("01-expense-tracker/js-version")
+		excludeDirs = excludeDirs +
+			file(".idea") +
+			file("gradle") +
+			file("01-expense-tracker/js-version") +
+			file("02-course-goals") +
+			file("03-user-creator/js-version")
 	}
 }
