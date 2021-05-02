@@ -3,9 +3,11 @@ package components.ui
 import commons.utils.EventHandler
 import commons.utils.FunctionalComponentDelegate
 import commons.utils.css
+import kotlinx.browser.document
 import kotlinx.css.*
 import kotlinx.html.js.onClickFunction
 import react.RProps
+import react.dom.createPortal
 import react.dom.h2
 import react.dom.p
 import styled.*
@@ -19,10 +21,34 @@ interface ErrorModalProps : RProps {
 }
 
 val ErrorModal by FunctionalComponentDelegate<ErrorModalProps> { props ->
+	+createPortal(document.getElementById("backdrop-root")) {
+		Backdrop { attrs.onConfirm = props.onConfirm }
+	}
+	+createPortal(document.getElementById("overlay-root")) {
+		ModalOverlay {
+			attrs {
+				title = props.title
+				message = props.message
+				onConfirm = props.onConfirm
+			}
+		}
+	}
+}
+
+private interface BackdropProps : RProps {
+
+	var onConfirm: EventHandler
+
+}
+
+private val Backdrop by FunctionalComponentDelegate<BackdropProps> { props ->
 	styledDiv {
 		css { +ErrorModalStyles.backdrop }
 		attrs.onClickFunction = props.onConfirm
 	}
+}
+
+private val ModalOverlay by FunctionalComponentDelegate<ErrorModalProps> { props ->
 	Card {
 		css { +ErrorModalStyles.modal }
 		styledHeader {
